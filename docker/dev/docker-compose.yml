@@ -1,0 +1,14 @@
+version: '3'
+services:
+  genra-ui-docker-dev:
+    container_name: genra-ui-${DOCKER_DEV_USERNAME}-docker-dev
+    command: yarn docker-dev
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile.dev
+    ports:
+      - '${DOCKER_DEV_PORT}:3000'
+    volumes:
+      - ../../:/genra-ui-docker-dev
+      - /genra-ui-docker-dev/node_modules/
+      - ~/.cache:/root/.cache
